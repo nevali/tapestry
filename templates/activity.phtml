@@ -1,0 +1,31 @@
+<?php
+
+require(dirname(__FILE__) . '/header.php');
+
+writeLn('<article class="activity">');
+
+foreach($objects['activity'] as $obj)
+{
+	if(!strlen($obj['type'])) $obj['type'] = $obj['default_post_type'];
+	writeLn('<section class="entry ' . _e($obj['type']) . '">');
+	writeLn('<h1><a href="' . _e($obj['link']) . '">' . _e($obj['title']) . '</a></h1>');
+	writeLn('<div class="description">');
+	if($obj['description_format'] == 'html' || $obj['description_format'] == 'xhtml')
+	{
+		writeLn($obj['description']);
+	}
+	else
+	{
+		writeLn(_e($obj['description']));
+	}
+	writeLn('</div>');
+	echo '<p class="info"><a class="service" href="' . _e($obj['account_uri']) . '"><img src="' . _e($skin_iri . 'services/' . $obj['icon']) . '" width="16" alt=""></a> ';
+	$dt = new EregansuDateTime($obj['postdate']);
+	echo 'Posted at ' . $dt->format('H:i') . ' on ' . $dt->format('j M Y');
+	echo ' • via <a href="' . _e($obj['account_uri']) . '">' . _e($obj['service_title']) . '</a>';
+	echo '</p>';
+	writeLn('</section>');
+}
+
+writeLn('</article>');
+require(dirname(__FILE__) . '/footer.php');

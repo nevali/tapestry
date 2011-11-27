@@ -1,0 +1,38 @@
+/* Default colour theme */
+
+html, body {
+	background: #efefef;
+}
+
+nav.global {
+	background: #000;
+	color: #fff;
+}
+
+header, article {
+	background: #fff;
+	border: solid #ddd 1px;
+}
+header {
+	border-bottom: none;
+}
+article {
+	border-top: none;
+}
+article.activity>section {
+	border-bottom: solid #ddd 1px;
+}
+article.activity>section>div.description blockquote {
+	border-left: solid #666 2px;
+}
+article.activity>section:last-child {
+	border-bottom: none;
+}
+article.activity p.info {	
+	background: #ddd;
+}
+aside.info h2 {
+	background: #000;
+	color: #fff;
+}
+
